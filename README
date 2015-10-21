@@ -1,0 +1,38 @@
+This was written for the Houston Hackerspace.  Main reason at the time was to
+track down things we may want to pick up from craigslist and related sites.
+
+This bot takes a list of urls, search terms and users.  It then goes through urls, search for the terms and 
+sends any updates to the users.  It takes commands via email and sends the search results via email.
+
+This is the first iteration of the application.  Later, it will become a main engine that will be wrapped in a 
+gem and then used in a web application with an admin interface.
+
+
+Instructions
+_____________
+
+Read the example.config.yml for how to configure the bot.
+
+Dependencies:
+You need an inbox just for this bot for accepting commands via email.  This will go away later.
+You need to install a few gems to get going, you can run this command:
+gem install curb, actionpack, mail, hpricot
+
+Once the gems are installed:
+  - Copy example.config.yml and rename to config.yml
+  - Change it to fit your environments
+  - Run this command from the project directory:
+      ruby run_job.rb
+      
+      
+To control the bot, you can send commands to the specified retrieval server.  Commands are sent as the subject, not the body. 
+The body is ignored.  DO NOT USE AN EXISTING MAIL BOX, bot will delete all emails it finds.
+
+The commands you can send are:
+  - add users <space separated receivers list>      # Example: add users joe@email.com jack@email.com john@email.com
+  - remove users <space separated receivers list>   # Example: remove users joe@email.com jack@email.com john@email.com
+  - add terms <space separated query words list>    # Example: add terms table pen paper
+  - remove terms <space separated query words list> # Example: remove terms table pen paper
+  - list                                            # Lists the current parameters
+  - resend                                          # Resend the last email
+  

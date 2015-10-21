@@ -1,0 +1,49 @@
+# A list of urls to query
+urls:
+  - http://houston.craigslist.org/zip/
+
+# Initial terms to search for
+initial_terms:
+  - couch
+  - table
+  - chair
+  - fridge
+
+# List of users to send results to
+send_list:
+  - my_email@my_domain.com
+  
+mail:
+  # Only accept control command from the following addresses
+  accept_commands_only_from:
+    - my_email@my_domain.com
+    
+  # The address from email address on the messages send out
+  default_from_adress: emailer@my_domain.com
+  
+  # Default subject is not currently used, but should have a value for future
+  default_subject: Search Results
+  
+  # The bot works on having it's own email box.  All commands are send to that email address
+  # Retrieval goes to that email address and looks for new commands.  It then wipes out all emails found
+  # The delivery configuration is the server to send emails through
+  delivery_protocal: :smtp
+  retriever_protocal: :pop3
+  defaults:
+    delivery_method:
+      :address: mail.my_email@my_domain.com
+      :port: 587
+      :user_name: emailer@my_email@my_domain.com
+      :password: my_password
+      :enable_ssl: true
+      :enable_starttls_auto: false
+
+    retriever_method:
+      :address: mail.my_domain.com
+      :port: 110
+      :user_name: emailer@my_domain.com
+      :password: my_password
+#      enable_ssl: false
+#      enable_starttls_auto: true
+
+    
